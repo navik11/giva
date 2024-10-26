@@ -1,5 +1,6 @@
 "use client"
 import AuthChecker from "@/components/AuthChecker";
+import { UserObj } from "@/type/user";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -8,7 +9,7 @@ import React, { useEffect } from "react";
 export default function Logout() {
 
   const router = useRouter();
-  let user: any;
+  let user: UserObj;
 
   const [username, setUsername] = React.useState<string>("");
 
@@ -47,7 +48,7 @@ export default function Logout() {
 
   return (
     <>
-      <AuthChecker children={
+      <AuthChecker conDiv={
         <div className="flex items-center justify-center h-[100vh]">
           <div className="w-50">
             <h4 className="text-6xl font-semibold leading-none">@{username},</h4>

@@ -11,7 +11,6 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -28,6 +27,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { UserObj } from "@/type/user";
 
 const data = [
   {
@@ -139,10 +139,10 @@ const data = [
 
 export default function AdminPage() {
 
-  const [dataset, setData] = React.useState<any[]>(data);
+  const [dataset, setData] = React.useState(data);
 
   const router = useRouter();
-  let user: any;
+  let user: UserObj;
 
   useEffect(() => {
     if (typeof window !== "undefined")
@@ -170,7 +170,7 @@ export default function AdminPage() {
     getData();
   }, [])
 
-  const handleDelete = async (id:Number) => {
+  const handleDelete = async (id:number) => {
 
     await axios({
       method: "delete",
@@ -183,13 +183,13 @@ export default function AdminPage() {
     }).then((res) => {
       getData();
       console.log(res);
-    }).catch((err) => {
+    }).catch(() => {
       router.push("/admin");
     });
   }
 
   return (
-      <AuthChecker children={
+      <AuthChecker conDiv={
         <div className="flex items-center justify-center">
           <div className="w-[75vw] px-8">
             <Header />
@@ -249,7 +249,7 @@ export default function AdminPage() {
                               <AlertDialogHeader>
                                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                                 <AlertDialogDescription>
-                                  This action can't be undone and will remove the <b>{data.name}</b> from the store.
+                                  This action can not be undone and will remove the <b>{data.name}</b> from the store.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
                               <AlertDialogFooter>

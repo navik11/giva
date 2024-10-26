@@ -1,7 +1,6 @@
 "use client";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@radix-ui/react-hover-card";
 import { CalendarIcon, GitHubLogoIcon, Pencil1Icon, PersonIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button"
 
 import {
   Tooltip,
@@ -11,13 +10,14 @@ import {
 } from "@/components/ui/tooltip"
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { UserObj } from "@/type/user";
 
 
 export function HomeText() {
 
   const router = useRouter();
 
-  let user: any;
+  let user: UserObj;
 
   const [username, setUsername] = useState<string>("guest");
   const [avatarUrl, setAvatarUrl] = useState<string>("");

@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 import axios from "axios"
-import { set } from "date-fns"
 import { useRouter } from "next/navigation"
 
 export default function LoginPage() {
@@ -22,7 +21,6 @@ export default function LoginPage() {
 
   const [msg, setMsg] = React.useState<string>("");
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [btnState, setBtnState] = React.useState<string>("");
   const [btnText, setBtnText] = React.useState<string>("Log in");
 
   const handleLogin = async (e: React.FormEvent) => {

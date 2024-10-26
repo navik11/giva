@@ -1,5 +1,5 @@
 "use client"
-import { Pencil1Icon, PersonIcon } from "@radix-ui/react-icons";
+import { PersonIcon } from "@radix-ui/react-icons";
 
 import {
   Tooltip,
@@ -9,9 +9,10 @@ import {
 } from "@/components/ui/tooltip"
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { UserObj } from "@/type/user";
 
 const Header = () => {
-  let user: any;
+  let user: UserObj;
 
   const [username, setUsername] = useState<string>("guest");
   const [avatarUrl, setAvatarUrl] = useState<string>("");

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import axios from 'axios';
 import Loader from './Loader';
-const AuthChecker = ({ children }: { children: any }) => {
+const AuthChecker = ({ conDiv }:{conDiv: React.JSX.Element}) => {
   const [isAuth, setIsAuth] = useState(false);
   const router = useRouter();
 
@@ -20,7 +20,7 @@ const AuthChecker = ({ children }: { children: any }) => {
         "Content-Type": "application/json",
         "Accept": "application/json"
       }
-    }).then((res) => {
+    }).then(() => {
       setIsAuth(() => true);
     }).catch((err) => {
       console.log(err);
@@ -34,7 +34,7 @@ const AuthChecker = ({ children }: { children: any }) => {
 
   return (
     <div>
-      {isAuth ? children : <Loader />}
+      {isAuth ? conDiv : <Loader />}
     </div>
   );
 };

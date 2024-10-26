@@ -1,37 +1,18 @@
 "use client"
 import AuthChecker from "@/components/AuthChecker";
 import Header from "@/components/Header";
-import { ArrowLeftIcon, Pencil2Icon, PlusCircledIcon, TrashIcon } from "@radix-ui/react-icons";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useEffect } from "react";
 
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { UserObj } from "@/type/user";
 
 export default function AddProduct() {
 
@@ -48,18 +29,18 @@ export default function AddProduct() {
       setBtnText(() => "Create Product");
     }
   }, [isLoading]);
-  let user: any;
+  let user: UserObj;
 
   useEffect(() => {
     if (typeof window !== "undefined")
       user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user") || "{}") : "";
-  });
+  }, []);
 
   const handleAdd = async (e: FormEvent) => {
     e.preventDefault();
     setMsg(() => "");
     setIsLoading(() => true);
-    let formData = new FormData(e.target as HTMLFormElement);
+    const formData = new FormData(e.target as HTMLFormElement);
     formData.append("accessToken", user?.token);
 
     await axios({
@@ -86,7 +67,7 @@ export default function AddProduct() {
 
   return (
     <>
-      <AuthChecker children={
+      <AuthChecker conDiv={
         <div className="flex items-center justify-center">
           <div className="w-[75vw] px-8">
             <Header />
