@@ -29,12 +29,12 @@ export default function AddProduct() {
       setBtnText(() => "Create Product");
     }
   }, [isLoading]);
+  
   let user: UserObj;
-
   useEffect(() => {
     if (typeof window !== "undefined")
       user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user") || "{}") : "";
-  }, []);
+  });
 
   let formData: FormData;
   const handleAdd = async (e: FormEvent) => {

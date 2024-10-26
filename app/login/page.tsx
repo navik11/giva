@@ -23,11 +23,12 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [btnText, setBtnText] = React.useState<string>("Log in");
 
+  let formData: FormData;
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setMsg(() => "");
     setIsLoading(() => true);
-    const formData = new FormData(e.target as HTMLFormElement);
+    formData = new FormData(e.target as HTMLFormElement);
 
     await axios({
       method: "post",
