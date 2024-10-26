@@ -1,7 +1,7 @@
 "use client"
 import AuthChecker from "@/components/AuthChecker";
 import Header from "@/components/Header";
-import { Pencil2Icon, PlusCircledIcon, TrashIcon } from "@radix-ui/react-icons";
+import { ArrowLeftIcon, Pencil2Icon, PlusCircledIcon, TrashIcon } from "@radix-ui/react-icons";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
@@ -170,11 +170,11 @@ export default function AdminPage() {
     getData();
   }, [])
 
-  const handleDelete = async (id:number) => {
+  const handleDelete = async (id: number) => {
 
     await axios({
       method: "delete",
-      url: process.env.NEXT_PUBLIC_GIVA_SERVER + "/user/product/"+id+"?accessToken="+user?.token,
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER + "/user/product/" + id + "?accessToken=" + user?.token,
       withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -189,85 +189,97 @@ export default function AdminPage() {
   }
 
   return (
-      <AuthChecker conDiv={
-        <div className="flex items-center justify-center">
-          <div className="w-[75vw] px-8">
-            <Header />
-            <div className="flex justify-between items-center mt-10">
+    <AuthChecker conDiv={
+      <div className="flex items-center justify-center">
+        <div className="w-[75vw] px-8">
+          <Header />
+          <div className="flex justify-between items-center mt-10">
             <div className="text-xl font-bold">
               Product manager
             </div>
+            <div>
+              
             <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger onClick={() => { router.push("/addProduct") }}><PlusCircledIcon className="hover:text-gray-500 hover:cursor-pointer text-gray-700" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>Add new product</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-            </div>
-            <div className="py-5 mt-3">
-              <Table>
-                <TableCaption className="mt-10">products @Giva Store.</TableCaption>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Material</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Weight</TableHead>
-                    <TableHead>Rating</TableHead>
-                    <TableHead className="text-right">Price (Rs.)</TableHead>
-                    <TableHead className="text-right">Action</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {dataset.map((data) => (
-                    <TableRow key={data.id}>
-                      <TableCell className="font-medium">{data.name}</TableCell>
-                      <TableCell>{data.material}</TableCell>
-                      <TableCell>{data.type}</TableCell>
-                      <TableCell>{data.weight}</TableCell>
-                      <TableCell>{data.rating}</TableCell>
-                      <TableCell className="text-right">{data.price}</TableCell>
-                      <TableCell className="flex items-end justify-end">
-                        <div className="flex h-5 space-x-4 text-sm items-end justify-end">
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger onClick={() => { router.push("/updateproduct/"+data.id) }}><Pencil2Icon className="hover:text-gray-500 hover:cursor-pointer text-gray-700" />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                <p>Edit</p>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                          <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                              <TrashIcon className="hover:text-gray-500 hover:cursor-pointer text-gray-700" />
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader>
-                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                  This action can not be undone and will remove the <b>{data.name}</b> from the store.
-                                </AlertDialogDescription>
-                              </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction className="hover:bg-red-500" onClick={async() => {data.name="deleting . . "; await handleDelete(data.id)}}>Delete</AlertDialogAction>
-                              </AlertDialogFooter>
-                            </AlertDialogContent>
-                          </AlertDialog>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <Tooltip>
+                <TooltipTrigger onClick={() => { router.push("/addProduct") }}><PlusCircledIcon className="hover:text-gray-500 hover:cursor-pointer text-gray-700" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Add new product</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger onClick={() => { router.push("/") }}><ArrowLeftIcon className="hover:text-gray-500 hover:cursor-pointer text-gray-700 ms-4" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Home</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             </div>
           </div>
+          <div className="py-5 mt-3">
+            <Table>
+              <TableCaption className="mt-10">products @Giva Store.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Name</TableHead>
+                  <TableHead>Material</TableHead>
+                  <TableHead>Type</TableHead>
+                  <TableHead>Weight</TableHead>
+                  <TableHead>Rating</TableHead>
+                  <TableHead className="text-right">Price (Rs.)</TableHead>
+                  <TableHead className="text-right">Action</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {dataset.map((data) => (
+                  <TableRow key={data.id}>
+                    <TableCell className="font-medium">{data.name}</TableCell>
+                    <TableCell>{data.material}</TableCell>
+                    <TableCell>{data.type}</TableCell>
+                    <TableCell>{data.weight}</TableCell>
+                    <TableCell>{data.rating}</TableCell>
+                    <TableCell className="text-right">{data.price}</TableCell>
+                    <TableCell className="flex items-end justify-end">
+                      <div className="flex h-5 space-x-4 text-sm items-end justify-end">
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger onClick={() => { router.push("/updateproduct/" + data.id) }}><Pencil2Icon className="hover:text-gray-500 hover:cursor-pointer text-gray-700" />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Edit</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <TrashIcon className="hover:text-gray-500 hover:cursor-pointer text-gray-700" />
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                This action can not be undone and will remove the <b>{data.name}</b> from the store.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction className="hover:bg-red-500" onClick={async () => { data.name = "deleting . . "; await handleDelete(data.id) }}>Delete</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </div>
-      } />
+      </div>
+    } />
   );
 }
 

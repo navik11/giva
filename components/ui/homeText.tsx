@@ -40,7 +40,7 @@ export function HomeText() {
         <div className="flex mt-20 h-5 items-center space-x-4 text-sm">
           <HoverCard>
             <HoverCardTrigger asChild>
-              <GitHubLogoIcon className="hover:text-gray-500 hover:cursor-pointer" />
+              <GitHubLogoIcon className="hover:text-gray-500 hover:cursor-pointer w-5 h-5" />
             </HoverCardTrigger>
             <HoverCardContent className="p-5 rounded-sm shadow-md bg-gray-50">
               <div className="flex justify-between space-x-4">
@@ -66,7 +66,7 @@ export function HomeText() {
             <Tooltip>
               <TooltipTrigger onClick={() => {router.push("/logout")}}>
                 {
-                  (avatarUrl != "") ? <img src={avatarUrl} alt="avatar" className="w-4 h-4 rounded-full" /> : <PersonIcon className="hover:text-gray-500 hover:cursor-pointer" />
+                  (avatarUrl != "") ? <img src={avatarUrl} alt="avatar" className="w-5 h-5 rounded-full" /> : <PersonIcon className="hover:text-gray-500 hover:cursor-pointer" />
                 }
               </TooltipTrigger>
               <TooltipContent>
@@ -77,7 +77,7 @@ export function HomeText() {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger onClick={() => {router.push("/admin")}}>
-                <Pencil1Icon className="hover:text-gray-500 hover:cursor-pointer" />
+                <Pencil1Icon className="hover:text-gray-500 hover:cursor-pointer w-5 h-5" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>Admin</p>
@@ -86,7 +86,7 @@ export function HomeText() {
           </TooltipProvider>
 
 
-          <span className="hover:text-gray-500 hover:cursor-pointer">Collection</span>
+          <span className="hover:text-gray-500 hover:cursor-pointer" onClick={() => router.push("/collection")}>Collection</span>
         </div>
       </div>
     </div>

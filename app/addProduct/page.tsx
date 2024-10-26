@@ -173,7 +173,7 @@ export default function AddProduct() {
                 <div className="text-xs mt-5 items-center justify-center w-full flex">
                   Navigate to
                   <span className="mx-2 text-gray-800 underline underline-offset-4 hover:text-gray-500 hover:cursor-pointer" onClick={() => {router.push("/admin")}}>Admin</span> or
-                  <span className="ms-2 text-gray-800 underline underline-offset-4 hover:text-gray-500 hover:cursor-pointer">Collection</span>
+                  <span className="ms-2 text-gray-800 underline underline-offset-4 hover:text-gray-500 hover:cursor-pointer" onClick={() => router.push("/collection")}>Collection</span>
                 </div>
               </form>
             </div>

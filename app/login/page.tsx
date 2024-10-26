@@ -84,11 +84,11 @@ export default function LoginPage() {
                 <Input id="password" name="password" type="password" required placeholder="pass" />
               </div>
             </div>
-            <div className="text-xs mt-5 items-center justify-center w-full flex">
+            {/* <div className="text-xs mt-5 items-center justify-center w-full flex">
               New here?
               <span className="mx-2 text-gray-800 underline underline-offset-4 hover:text-gray-500 hover:cursor-pointer">Sign up</span> or
               <span className="ms-2 text-gray-800 underline underline-offset-4 hover:text-gray-500 hover:cursor-pointer">Forgot password</span>
-            </div>
+            </div> */}
             <div className="text-xs my-5 items-center justify-center w-full flex text-red-400">
               {msg}
             </div>
