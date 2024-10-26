@@ -36,11 +36,12 @@ export default function AddProduct() {
       user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user") || "{}") : "";
   }, []);
 
+  let formData: FormData;
   const handleAdd = async (e: FormEvent) => {
     e.preventDefault();
     setMsg(() => "");
     setIsLoading(() => true);
-    const formData = new FormData(e.target as HTMLFormElement);
+    formData = new FormData(e.target as HTMLFormElement);
     formData.append("accessToken", user?.token);
 
     await axios({
@@ -50,7 +51,7 @@ export default function AddProduct() {
       withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",
-        "Accept": "application/json"
+        "Accept": "application/json",
       }
     }).then((res) => {
       console.log(res);

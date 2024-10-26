@@ -62,11 +62,12 @@ export default function PutProductPage() {
     getProductDetail();
   }, [])
 
+  let formData: FormData;
   const handleUpdate = async (e: FormEvent) => {
     e.preventDefault();
     setMsg(() => "");
     setIsLoading(() => true);
-    const formData = new FormData(e.target as HTMLFormElement);
+    formData = new FormData(e.target as HTMLFormElement);
     formData.append("accessToken", user?.token);
 
     await axios({
