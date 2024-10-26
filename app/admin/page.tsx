@@ -153,7 +153,7 @@ export default function AdminPage() {
   const getData = () => {
     axios({
       method: "get",
-      url: process.env.NEXT_PUBLIC_SERVER + "/user/allProducts",
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER + "/user/allProducts",
       headers: {
         "Content-Type": "multipart/form-data",
         "Accept": "application/json"
@@ -174,7 +174,7 @@ export default function AdminPage() {
 
     await axios({
       method: "delete",
-      url: process.env.NEXT_PUBLIC_SERVER + "/user/product/"+id+"?accessToken="+user?.token,
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER + "/user/product/"+id+"?accessToken="+user?.token,
       withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",

@@ -31,7 +31,7 @@ export default function LoginPage() {
 
     await axios({
       method: "post",
-      url: process.env.NEXT_PUBLIC_SERVER + "/user/login",
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER + "/user/login",
       data: formData,
       withCredentials: true,
       headers: {

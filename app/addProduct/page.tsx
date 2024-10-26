@@ -45,7 +45,7 @@ export default function AddProduct() {
 
     await axios({
       method: "post",
-      url: process.env.NEXT_PUBLIC_SERVER + "/user/product",
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER + "/user/product",
       data: formData,
       withCredentials: true,
       headers: {

@@ -11,7 +11,7 @@ const AuthChecker = ({ conDiv }:{conDiv: React.JSX.Element}) => {
 
     await axios({
       method: "post",
-      url: process.env.NEXT_PUBLIC_SERVER+"/user/checkAuth",
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER+"/user/checkAuth",
       withCredentials: true,
       data: {
         accessToken: token

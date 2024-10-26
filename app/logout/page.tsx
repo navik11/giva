@@ -31,7 +31,7 @@ export default function Logout() {
 
     await axios({
       method: "get",
-      url: process.env.NEXT_PUBLIC_SERVER+"/user/logout",
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER+"/user/logout",
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",

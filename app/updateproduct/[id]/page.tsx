@@ -42,7 +42,7 @@ export default function PutProductPage() {
     setIsLoading(() => true);
     await axios({
       method: "get",
-      url: process.env.NEXT_PUBLIC_SERVER + "/user/product/"+id,
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER + "/user/product/"+id,
       // withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -71,7 +71,7 @@ export default function PutProductPage() {
 
     await axios({
       method: "put",
-      url: process.env.NEXT_PUBLIC_SERVER + "/user/product/"+id,
+      url: process.env.NEXT_PUBLIC_GIVA_SERVER + "/user/product/"+id,
       data: formData,
       withCredentials: true,
       headers: {
