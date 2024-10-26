@@ -60,7 +60,7 @@ export default function CollectionPage() {
             </Tooltip>
           </TooltipProvider>
         </div>
-        <div className="py-5 mt-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-auto gap-y-10">
+        <div className="py-5 mt-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
           {dataset?.map((data: Product) => (
             <ProductCard key={data.id} product={data} />
           ))}

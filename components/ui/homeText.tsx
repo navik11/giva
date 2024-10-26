@@ -25,38 +25,40 @@ export function HomeText() {
   useEffect(() => {
     if (typeof window !== "undefined")
       user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user") || "{}") : "";
-      // console.log(user);
-      setUsername(() => user?.user?.username || "guest");
-      setAvatarUrl(() => user?.user?.avatar || "");
+    // console.log(user);
+    setUsername(() => user?.user?.username || "guest");
+    setAvatarUrl(() => user?.user?.avatar || "");
   });
 
   return (
-    <div className="flex items-center justify-center h-[100vh]">
-      <div className="w-50">
-        <h4 className="text-6xl font-semibold leading-none">Giva,</h4>
-        <p className="text-3xl mt-3 text-muted-foreground underline-offset-4">
-          Authentic <i>Fine Silver</i>, <i>Pure Gold</i> and <i>Diamonds</i>
+    <div className="flex items-center flex-col justify-center h-[100vh] text-center p-4">
+      <div className="w-50 items-center flex flex-col">
+        <h4 className="text-6xl font-semibold leading-none">Giva</h4>
+        <p className="text-2xl mt-5 text-muted-foreground underline-offset-4">
+          Authentic <b>Fine Silver</b>, <i>Pure Gold</i> and <u>Diamonds</u>
         </p>
-        <div className="flex mt-20 h-5 items-center space-x-4 text-sm">
+        <div className="flex mt-20 h-5 items-center space-x-4 text-sm text-left">
           <HoverCard>
             <HoverCardTrigger asChild>
               <GitHubLogoIcon className="hover:text-gray-500 hover:cursor-pointer w-5 h-5" />
             </HoverCardTrigger>
-            <HoverCardContent className="p-5 rounded-sm shadow-md bg-gray-50">
+            <HoverCardContent className="p-5 rounded-md shadow-md">
               <div className="flex justify-between space-x-4">
-                <GitHubLogoIcon className="w-10 h-10" />
-                <div className="space-y-1">
-                  <h4 className="text-sm font-semibold">@navik11</h4>
-                  <p className="text-sm">
-                    Giva store – created and maintained by Sachida.
-                  </p>
-                  <div className="flex items-center pt-2">
-                    <CalendarIcon />
-                    <span className="text-xs ms-2 text-muted-foreground">
-                      Joined Oct 2024
-                    </span>
+                <GitHubLogoIcon className="w-10 h-10 cursor-pointer" />
+                <a href="https://github.com/navik11" target="_blank" rel="noopener noreferrer">
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-semibold">@navik11</h4>
+                    <p className="text-xs">
+                      Giva store – created and maintained by Sachida.
+                    </p>
+                    <div className="flex items-center pt-2">
+                      <CalendarIcon className="w-4 h-4" />
+                      <span className="text-xs ms-2 text-muted-foreground">
+                        Joined Oct 2024
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
             </HoverCardContent>
           </HoverCard>
@@ -64,7 +66,7 @@ export function HomeText() {
 
           <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger onClick={() => {router.push("/logout")}}>
+              <TooltipTrigger onClick={() => { router.push("/logout") }}>
                 {
                   (avatarUrl != "") ? <img src={avatarUrl} alt="avatar" className="w-5 h-5 rounded-full" /> : <PersonIcon className="hover:text-gray-500 hover:cursor-pointer" />
                 }
@@ -76,7 +78,7 @@ export function HomeText() {
           </TooltipProvider>
           <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger onClick={() => {router.push("/admin")}}>
+              <TooltipTrigger onClick={() => { router.push("/admin") }}>
                 <Pencil1Icon className="hover:text-gray-500 hover:cursor-pointer w-5 h-5" />
               </TooltipTrigger>
               <TooltipContent>
@@ -89,6 +91,7 @@ export function HomeText() {
           <span className="hover:text-gray-500 hover:cursor-pointer" onClick={() => router.push("/collection")}>Collection</span>
         </div>
       </div>
+      <span className="text-xs text-muted-foreground mt-52 text-center">note: It might take time to respond for the first time<br></br> since, <b>@Render</b> makes web server ideal after 15m of incative time</span>
     </div>
   );
 }
